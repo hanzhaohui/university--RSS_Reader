@@ -1,0 +1,30 @@
+【项目名称】
+	linux环境下，基于PHP的数据显示程序
+
+【项目描述】
+	该程序是运行在linux环境下，基于LAMP平台的数据展示程序。
+	该程序实现的主要功能是：将用户保存在数据库中的数据读取出来，并显示在页面上。通过点击article.list.php页面的“搜索最新内容”超链接，调用数据抓取模块spider,该模块的可执行二进制代码spidercpp.o已拷贝到该目录下。
+	
+【项目环境】
+	linux环境（ubutun12.04）下，安装LAMP环境
+	【方法一：】
+		1.安装Apache：$sudo apt-get install apache2                	查看安装信息：$apache2 -v
+		2.安装PHP：$sudo apt-get install php5                     	查看安装信息：$php5 -v
+                *查看apache是否加载了libphp5.so模块：$ cat /etc/apache2/mods-enabled/php5.load
+		3.安装MySQL：$sudo apt-get install mysql-server 
+																*通过apt-get安装的MySQL，默认情况下不允许远程访问
+            （1）	查看MySQL是否加载了mysql.so模块：$ cat /etc/php5/conf.d/mysql.ini
+			答：没有文件。因为php默认不安装MySQL的扩展，执行$sudo apt-get install php5-mysql安装扩展。再执行查看命令，发现mysql.so被正确加载。
+            （2）	重启mysql服务：$sudo service mysql restart
+				重启Apache服务：$sudo service apache2 restart
+	【方法二：】
+            $sudo apt-get install apache2 php5 mysql-server php5-mysql
+	【方法三：（拓展）】
+            $sudo tasksel install lamp-server	(tasksel只提供一些软件套装，比如dns服务器、邮件服务器的软件套装)
+
+【项目运行】
+	需要将article文件夹移动到apache的主目录下，默认为/var/www/目录。再用浏览器打开网页的入口文件article.list.php即可(127.0.0.1/article/article.list.php)。
+
+【其他】	
+	1.该程序为article.list.php实现了分页显示。
+	2.安装phpMyAdmin
